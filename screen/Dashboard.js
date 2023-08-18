@@ -24,6 +24,7 @@ function CategoriesList() {
     <Pressable>
       <View>
         <Image source={{ uri: "" }} />
+        <Text>title</Text>
       </View>
     </Pressable>
   );
