@@ -82,8 +82,7 @@ export function DetailScreen() {
           source={{
             uri: "https://www.bing.com/images/blob?bcid=qAVittj8lfkF59mTJ5W0H3j8tt71.....08"
           }}
-          width={
-          }
+          width={"100%"}
         />
       </View>
       <View style={styles.bottomContainer}>
