@@ -2,11 +2,11 @@ import { FlatList, Image, Pressable, View } from "react-native";
 import { Appbar, Text, Card } from "react-native-paper";
 
 function ListCard(item) {
-  const { name, price, category, rating, imageUrl } = item;
+  const { id,name, price, category, rating, imageUrl, action } = item;
   return (
-    <Pressable>
+    <Pressable onPress={() => action(id)}>
       <View>
-        <Image source={{ uri: "" }} width={50} height={70} />
+        <Image source={{ uri: "" }} width={100} height={100} />
 
         <View>
           <Text>name</Text>
@@ -30,7 +30,8 @@ function CategoriesList() {
   );
 }
 
-export function DashboardScreen() {
+export function DashboardScreen({ navigation, route }) {
+  const handleNavigate = (id) => navigation.navigate("Details", { item: id });
   const data = [
     {
       id: "1",
@@ -39,21 +40,48 @@ export function DashboardScreen() {
       category: "",
       rating: "",
       imageUrl: "",
+      color: ["black", "yellow", "gold"],
+      action: handleNavigate,
+    },
+    {
+      id: "1",
+      name: "",
+      price: "",
+      category: "",
+      rating: "",
+      imageUrl: "",
+      color: ["black", "yellow", "gold"],
+      action: handleNavigate,
+    },
+    {
+      id: "1",
+      name: "",
+      price: "",
+      category: "",
+      rating: "",
+      imageUrl: "",
+      color: ["black", "yellow", "gold"],
+      action: handleNavigate,
     },
   ];
   return (
     <View>
-      <Appbar></Appbar>
+      <Text>Find your style</Text>
       <View>
-        <View></View>
-        <View>
-          <FlatList
-            data={data}
-            renderItem={({ item }) => <ListCard {...item} />}
-            keyExtractor={(item) => item.id}
-            numColumns={2}
-          />
-        </View>
+        <FlatList
+          horizontal
+          data={data}
+          renderItem={({ item }) => <CategoriesList />}
+          keyExtractor={(item) => item.id}
+        />
+      </View>
+      <View>
+        <FlatList
+          data={data}
+          renderItem={({ item }) => <ListCard {...item} />}
+          keyExtractor={(item) => item.id}
+          numColumns={2}
+        />
       </View>
     </View>
   );
