@@ -20,8 +20,8 @@ function ListCard(item) {
 }
 
 const CategoriesList = () => (
-  <Button mode="outlined">
-    <View style={styles.categoryList}>
+  <View style={styles.categoryList}>
+    <Button>
       <View style={styles.imageView}>
         <Image
           source={{
@@ -30,9 +30,9 @@ const CategoriesList = () => (
           style={styles.imageCategory}
         />
       </View>
-      <Text style={[styles.text, styles.categoryText]}>title</Text>
-    </View>
-  </Button>
+    </Button>
+    <Text style={[styles.text, styles.categoryText]}>title</Text>
+  </View>
 );
 
 export function DashboardScreen({ navigation, route }) {
@@ -49,7 +49,7 @@ export function DashboardScreen({ navigation, route }) {
       action: handleNavigate,
     },
     {
-      id: "1",
+      id: "2",
       name: "",
       price: "",
       category: "",
@@ -59,7 +59,7 @@ export function DashboardScreen({ navigation, route }) {
       action: handleNavigate,
     },
     {
-      id: "1",
+      id: "3",
       name: "",
       price: "",
       category: "",
@@ -105,34 +105,35 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   categoryView: {
-    height: 50,
+    // height: 50,
     width: "100%",
+    paddingBottom:10
   },
   bodyView: {
     flex: 1,
+    paddingTop: 10,
     paddingBottom: 20,
     width: "100%",
     backgroundColor: "green",
   },
   categoryList: {
-    width: 50,
-    height: 50,
-    borderRadius: 30,
-    borderWidth: 2,
+    // borderWidth: 2,
   },
   categoryText: {
     fontSize: 15,
     fontWeight: "400",
     fontStyle: "normal",
+    textAlign: "center",
   },
   imageView: {
-    width: "100%",
+    width: 40,
     height: 40,
     borderRadius: 50,
+    borderWidth: 1,
   },
   imageCategory: {
-    height: "100%",
-    width: "100%",
-    borderRadius: "60%",
+    //   height: 40,
+    //   width: 40,
+    //   borderRadius: 50,
   },
 });
