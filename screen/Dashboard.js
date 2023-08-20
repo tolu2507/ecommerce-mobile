@@ -1,8 +1,8 @@
-import { FlatList, Image, Pressable, View } from "react-native";
-import { Appbar, Text, Card } from "react-native-paper";
+import { FlatList, Image, Pressable, StyleSheet, View } from "react-native";
+import { Appbar, Text, Card, Button } from "react-native-paper";
 
 function ListCard(item) {
-  const { id,name, price, category, rating, imageUrl, action } = item;
+  const { id, name, price, category, rating, imageUrl, action } = item;
   return (
     <Pressable onPress={() => action(id)}>
       <View>
@@ -19,16 +19,21 @@ function ListCard(item) {
   );
 }
 
-function CategoriesList() {
-  return (
-    <Pressable>
-      <View>
-        <Image source={{ uri: "" }} />
-        <Text>title</Text>
+const CategoriesList = () => (
+  <Button mode="outlined">
+    <View style={styles.categoryList}>
+      <View style={styles.imageView}>
+        <Image
+          source={{
+            uri: "https://www.bing.com/images/blob?bcid=qAVittj8lfkF59mTJ5W0H3j8tt71.....08",
+          }}
+          style={styles.imageCategory}
+        />
       </View>
-    </Pressable>
-  );
-}
+      <Text style={[styles.text, styles.categoryText]}>title</Text>
+    </View>
+  </Button>
+);
 
 export function DashboardScreen({ navigation, route }) {
   const handleNavigate = (id) => navigation.navigate("Details", { item: id });
@@ -65,9 +70,9 @@ export function DashboardScreen({ navigation, route }) {
     },
   ];
   return (
-    <View>
-      <Text>Find your style</Text>
-      <View>
+    <View style={styles.container}>
+      <Text style={styles.text}>Find your style</Text>
+      <View style={styles.categoryView}>
         <FlatList
           horizontal
           data={data}
@@ -75,7 +80,7 @@ export function DashboardScreen({ navigation, route }) {
           keyExtractor={(item) => item.id}
         />
       </View>
-      <View>
+      <View style={styles.bodyView}>
         <FlatList
           data={data}
           renderItem={({ item }) => <ListCard {...item} />}
@@ -86,3 +91,48 @@ export function DashboardScreen({ navigation, route }) {
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginHorizontal: 10,
+    marginVertical: 20,
+  },
+  text: {
+    color: "black",
+    fontSize: 24,
+    fontStyle: "italic",
+    fontWeight: "bold",
+  },
+  categoryView: {
+    height: 50,
+    width: "100%",
+  },
+  bodyView: {
+    flex: 1,
+    paddingBottom: 20,
+    width: "100%",
+    backgroundColor: "green",
+  },
+  categoryList: {
+    width: 50,
+    height: 50,
+    borderRadius: 30,
+    borderWidth: 2,
+  },
+  categoryText: {
+    fontSize: 15,
+    fontWeight: "400",
+    fontStyle: "normal",
+  },
+  imageView: {
+    width: "100%",
+    height: 40,
+    borderRadius: 50,
+  },
+  imageCategory: {
+    height: "100%",
+    width: "100%",
+    borderRadius: "60%",
+  },
+});
