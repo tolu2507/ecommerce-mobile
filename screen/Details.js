@@ -1,24 +1,6 @@
 import { FlatList, Image, Pressable, StyleSheet, View } from "react-native";
 import { Appbar, Text, Card } from "react-native-paper";
 
-function ListCard(item) {
-  const { name, price, category, rating, imageUrl } = item;
-  return (
-    <Pressable>
-      <View>
-        <Image source={{ uri: "" }} width={50} height={70} />
-
-        <View>
-          <Text>name</Text>
-          <Text>price</Text>
-          <Text>category</Text>
-          <Text>rating</Text>
-        </View>
-      </View>
-    </Pressable>
-  );
-}
-
 function CategoriesList({ props, useSize }) {
   // const color = { backgroundColor: colors };
 
@@ -63,7 +45,9 @@ function TextandView({ text, data, useSize }) {
     </View>
   );
 }
-export function DetailScreen() {
+export function DetailScreen({ navigation, route }) {
+  const { item } = route.params;
+  console.log(item);
   const data = {
     id: "1",
     name: "",
@@ -80,9 +64,10 @@ export function DetailScreen() {
       <View style={styles.topContainer}>
         <Image
           source={{
-            uri: "https://www.bing.com/images/blob?bcid=qAVittj8lfkF59mTJ5W0H3j8tt71.....08"
+            uri: "https://i5.walmartimages.com/asr/edad212f-5504-4cf7-afbd-fc540ce03c2f_1.3eb1fc956d5423561bf8f65fbf7a8197.jpeg",
           }}
           width={"100%"}
+          height={"100%"}
         />
       </View>
       <View style={styles.bottomContainer}>
@@ -148,14 +133,13 @@ const styles = StyleSheet.create({
     flex: 1,
     display: "flex",
     padding: 20,
-    backgroundColor: "#abe8ab",
+    backgroundColor: "#ffff",
     justifyContent: "space-between",
   },
   bottomContainer: {
     marginTop: 5,
   },
   topContainer: {
-    borderWidth: 2,
     flex: 1,
     position: "relative",
   },
@@ -224,6 +208,6 @@ const styles = StyleSheet.create({
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    borderRadius: 20,
+    borderRadius: 10,
   },
 });

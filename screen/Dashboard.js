@@ -4,33 +4,40 @@ import { Appbar, Text, Card, Button } from "react-native-paper";
 function ListCard(item) {
   const { id, name, price, category, rating, imageUrl, action } = item;
   return (
-    <Pressable onPress={() => action(id)}>
-      <View>
-        <Image source={{ uri: "" }} width={100} height={100} />
+    <View style={styles.listView}>
+      <Pressable onPress={() => action(id)}>
+        <Image
+          source={{
+            uri: "https://i5.walmartimages.com/asr/edad212f-5504-4cf7-afbd-fc540ce03c2f_1.3eb1fc956d5423561bf8f65fbf7a8197.jpeg",
+          }}
+          width={"100%"}
+          height={150}
+          style={{ borderTopLeftRadius: 20, borderTopRightRadius: 20 }}
+        />
 
-        <View>
-          <Text>name</Text>
-          <Text>price</Text>
-          <Text>category</Text>
-          <Text>rating</Text>
+        <View style={styles.listCardView}>
+          <Text style={[styles.text, styles.textTitle]}>name</Text>
+          <Text style={[styles.text, styles.texts]}>price</Text>
+          <Text style={[styles.text, styles.texts]}>category</Text>
+          <Text style={[styles.text, styles.texts]}>rating</Text>
         </View>
-      </View>
-    </Pressable>
+      </Pressable>
+    </View>
   );
 }
 
-const CategoriesList = () => (
+const CategoriesList = ({image,text,id}) => (
   <View style={styles.categoryList}>
-    <Button>
-      <View style={styles.imageView}>
-        <Image
-          source={{
-            uri: "https://www.bing.com/images/blob?bcid=qAVittj8lfkF59mTJ5W0H3j8tt71.....08",
-          }}
-          style={styles.imageCategory}
-        />
-      </View>
-    </Button>
+    <Pressable onPress={() => action(id)}>
+      <Image
+        source={{
+          uri: "https://i5.walmartimages.com/asr/edad212f-5504-4cf7-afbd-fc540ce03c2f_1.3eb1fc956d5423561bf8f65fbf7a8197.jpeg",
+        }}
+        width={50}
+        height={50}
+        style={{ borderRadius: 25 }}
+      />
+    </Pressable>
     <Text style={[styles.text, styles.categoryText]}>title</Text>
   </View>
 );
@@ -60,6 +67,66 @@ export function DashboardScreen({ navigation, route }) {
     },
     {
       id: "3",
+      name: "",
+      price: "",
+      category: "",
+      rating: "",
+      imageUrl: "",
+      color: ["black", "yellow", "gold"],
+      action: handleNavigate,
+    },
+    {
+      id: "4",
+      name: "",
+      price: "",
+      category: "",
+      rating: "",
+      imageUrl: "",
+      color: ["black", "yellow", "gold"],
+      action: handleNavigate,
+    },
+    {
+      id: "5",
+      name: "",
+      price: "",
+      category: "",
+      rating: "",
+      imageUrl: "",
+      color: ["black", "yellow", "gold"],
+      action: handleNavigate,
+    },
+    {
+      id: "6",
+      name: "",
+      price: "",
+      category: "",
+      rating: "",
+      imageUrl: "",
+      color: ["black", "yellow", "gold"],
+      action: handleNavigate,
+    },
+    {
+      id: "7",
+      name: "",
+      price: "",
+      category: "",
+      rating: "",
+      imageUrl: "",
+      color: ["black", "yellow", "gold"],
+      action: handleNavigate,
+    },
+    {
+      id: "8",
+      name: "",
+      price: "",
+      category: "",
+      rating: "",
+      imageUrl: "",
+      color: ["black", "yellow", "gold"],
+      action: handleNavigate,
+    },
+    {
+      id: "9",
       name: "",
       price: "",
       category: "",
@@ -107,17 +174,14 @@ const styles = StyleSheet.create({
   categoryView: {
     // height: 50,
     width: "100%",
-    paddingBottom:10
+    marginVertical:20
   },
   bodyView: {
     flex: 1,
     paddingTop: 10,
-    paddingBottom: 20,
-    width: "100%",
-    backgroundColor: "green",
   },
   categoryList: {
-    // borderWidth: 2,
+    marginLeft: 10,
   },
   categoryText: {
     fontSize: 15,
@@ -128,12 +192,32 @@ const styles = StyleSheet.create({
   imageView: {
     width: 40,
     height: 40,
-    borderRadius: 50,
+    borderRadius: 20,
     borderWidth: 1,
   },
-  imageCategory: {
-    //   height: 40,
-    //   width: 40,
-    //   borderRadius: 50,
+  // imageCategory: {
+  //   height: 50,
+  //   width: 50,
+  //   borderWidth: 1,
+  //   objectFit:"contain"
+  // },
+  listView: {
+    // borderWidth: 1,
+    flex: 1 / 2,
+    margin: 10,
+    borderRadius: 5,
+    backgroundColor: "white",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
+  listCardView: {
+    padding: 5,
+  },
+  texts: {
+    fontSize: 12,
+    fontWeight: "400",
+    textTransform: "capitalize",
+    fontStyle: "italic",
+  },
+  textTitle: { fontSize: 16, fontWeight: "600", textTransform: "capitalize" },
 });
