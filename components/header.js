@@ -1,12 +1,13 @@
 import { useNavigation } from "@react-navigation/native";
 import { Appbar } from "react-native-paper";
+import { CART } from "../constant";
 
 export const DashboardHeader = () => {
   const navigation = useNavigation();
 
   const _handleSearch = () => console.log("Searching");
 
-  const _handleMore = () => navigation.navigate("Cart");
+  const _handleMore = () => navigation.navigate(CART);
   return (
     <Appbar.Header>
       <Appbar.Content title="BuyNow" />
@@ -23,7 +24,7 @@ export const CartHeader = () => {
   return (
     <Appbar.Header>
       <Appbar.BackAction onPress={_goBack} />
-      <Appbar.Content title="Cart" />
+      <Appbar.Content title={CART} />
     </Appbar.Header>
   );
 };
@@ -32,7 +33,7 @@ export const DetailHeader = () => {
   const navigation = useNavigation();
 
   const _goBack = () => navigation.goBack();
-  const _handleMore = () => navigation.navigate("Cart");
+  const _handleMore = () => navigation.navigate(CART);
   return (
     <Appbar.Header>
       <Appbar.BackAction onPress={_goBack} />
