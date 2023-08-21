@@ -1,6 +1,7 @@
 import { useNavigation } from "@react-navigation/native";
 import { Image, Pressable, StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
+import { DETAILS } from "../constant";
 
 export const _formatter = (number)=>{
   let returner = `# ${number}`
@@ -11,7 +12,7 @@ export const ListCard=(item)=>{
   const {navigate} = useNavigation()
     const { id, title, price, category, rating, image,description } = item;
 
-    const handleNavigate = () => navigate("Details", { item: {image:image,_id:id,name:title,price:price,rating:rating,description:description} });
+    const handleNavigate = () => navigate(DETAILS, { item: {image:image,_id:id,name:title,price:price,rating:rating,description:description} });
     return (
       <View style={styles.listView}>
         <Pressable onPress={handleNavigate}>
@@ -38,20 +39,23 @@ export const ListCard=(item)=>{
  export const CategoriesList = ({title,action}) => (
     <View style={styles.categoryList}>
       <Pressable onPress={action}>
-        <Image
-          source={{
-            uri: "https://i5.walmartimages.com/asr/edad212f-5504-4cf7-afbd-fc540ce03c2f_1.3eb1fc956d5423561bf8f65fbf7a8197.jpeg",
-          }}
-          width={50}
-          height={50}
-          style={{ borderRadius: 25 }}
-        />
+        <View style={styles.cart}>
+          <Text style={[styles.text,styles.categoryText]}>{title}</Text>
+        </View>
       </Pressable>
-      <Text style={[styles.text, styles.categoryText]}>{title}</Text>
     </View>
   );
 
   const styles = StyleSheet.create({
+    cart:{
+      width:50,
+      height:50,
+      borderRadius:25,
+      backgroundColor:"purple",
+      display:"flex",
+      justifyContent:"center",
+
+    },
     text: {
       color: "black",
       fontSize: 24,
@@ -62,10 +66,10 @@ export const ListCard=(item)=>{
       marginLeft: 10,
     },
     categoryText: {
-      fontSize: 15,
-      fontWeight: "400",
+      fontSize: 12,
       fontStyle: "normal",
       textAlign: "center",
+      color:"white"
     },
     listView: {
       flex: 1 / 2,

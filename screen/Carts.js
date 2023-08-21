@@ -1,20 +1,16 @@
-import { Image, Pressable, ScrollView, StyleSheet, View } from "react-native";
+import { ScrollView, StyleSheet, View } from "react-native";
 import Button from "../components/button";
-import { IconButton, Text } from "react-native-paper";
-import Counter from "../components/counter";
+import { Text } from "react-native-paper";
 import CartDetail from "../components/CartDetails";
-import { useDispatch, useSelector } from "react-redux";
-import { useLayoutEffect } from "react";
-import { fetchCart } from "../store/cartSlice";
-import { useEffect } from "react";
+import { useSelector } from "react-redux";
 import { _formatter } from "../components/Card";
 import { useNavigation } from "@react-navigation/native";
+import { DASHBOARD } from "../constant";
 
 function TextwithPrice({text,price}){
-let changer = `# ${price}`
   return<View style={styles.textView}>
   <Text style={[styles.text, styles.textTitle]}>{text}</Text>
-  <Text style={[styles.text, styles.textPrice]}>{changer}</Text>
+  <Text style={[styles.text, styles.textPrice]}>{_formatter(price)}</Text>
 </View>
 }
 {/*  */}
@@ -44,7 +40,7 @@ export function CartScreen() {
           <TextwithPrice text="Total" price={sum}/>
           </View>
         </View>
-        <Button action={()=>navigate("Dashboard")} text={Add}/>
+        <Button action={()=>navigate(DASHBOARD)} text={Add}/>
       </ScrollView>
     </View>
   );

@@ -1,14 +1,7 @@
-import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit'
+import { Fetch } from '../service/service'
 
-// First, create the thunk
-export const fetchCategories = createAsyncThunk(
-  'fetchCategories',
-  async () => {
-    const response = await fetch('https://fakestoreapi.com/products/categories')
-   const res = await response.json();
-   return res;
-  }
-)
+
 
 const categorySlice = createSlice({
   name: "category",
@@ -17,7 +10,7 @@ const categorySlice = createSlice({
   
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchCategories.fulfilled, (state, action) => {
+    builder.addCase(Fetch.cartegories.fulfilled, (state, action) => {
       return action.payload
     })
   },

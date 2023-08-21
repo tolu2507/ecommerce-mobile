@@ -3,9 +3,8 @@ import { Text, ActivityIndicator } from "react-native-paper";
 import { CategoriesList, ListCard } from "../components/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import { fetchProducts } from "../store/productSlice";
-import { fetchCategories } from "../store/categorySlice";
 import { useState } from "react";
+import { Fetch } from "../service/service";
 
 
 
@@ -16,8 +15,8 @@ export function DashboardScreen({ navigation, route }) {
   const {product,categories} = useSelector(state=>state)
 
   useEffect(()=>{
-    dispatch(fetchProducts())
-    dispatch(fetchCategories())
+    dispatch(Fetch.products())
+    dispatch(Fetch.cartegories())
   },[])
 
   useEffect(()=>{

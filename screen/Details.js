@@ -1,5 +1,5 @@
-import { FlatList, Image, Pressable, StyleSheet, View } from "react-native";
-import { Appbar, Text, Card } from "react-native-paper";
+import { Image, StyleSheet, View } from "react-native";
+import { Text } from "react-native-paper";
 import Button from "../components/button";
 import { _formatter } from "../components/Card";
 import { TextandView } from "../components/helpers";

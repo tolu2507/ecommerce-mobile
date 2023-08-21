@@ -13,12 +13,11 @@ const Stack = createNativeStackNavigator();
 export default function App() {
 
   const [loaded] = useFonts({
-    Ubuntu: require('./assets/fonts/Ubuntu-Bold.ttf')
+    Ubuntu: require('./assets/fonts/Ubuntu-Regular.ttf')
   });
   
 
   if (!loaded) {
-console.log("not loaded");
     return null;
   }
 
@@ -26,25 +25,7 @@ console.log("not loaded");
     
     <PaperProvider>
       <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen
-            options={{ header: () => <DashboardHeader /> }}
-            name="Dashboard"
-            component={DashboardScreen}
-          />
-          <Stack.Screen
-            options={{ header: () => <DetailHeader /> }}
-            name="Details"
-            component={DetailScreen}
-          />
-          <Stack.Screen
-            options={{ header: () => <CartHeader /> }}
-            name="Cart"
-            component={CartScreen}
-          />
-        </Stack.Navigator>
-      </NavigationContainer>
+      
       </Provider>
     </PaperProvider>
   );
