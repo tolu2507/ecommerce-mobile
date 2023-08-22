@@ -1,6 +1,4 @@
-# Ecommerce-mobile documentation
-# Ecommerce Listing App
-
+# Ecommerce Listing App documentation
 # Project Setup
 1. Install React Native and required dependencies using create-react-native-app or expo-cli.
 2. Set up your project directory structure and initialize Git.
